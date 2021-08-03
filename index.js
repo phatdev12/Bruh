@@ -1,4 +1,4 @@
-const { Util,Client, MessageEmbed, Collection, RichEmbed } = require('discord.js');
+const { Util,Client, MessageEmbed, Collection } = require('discord.js');
 const { executionAsyncResource } = require('async_hooks');
 const client = new Client();
 const { Player } = require("discord-player");
@@ -34,7 +34,7 @@ const prefix = 'br!';
 client.player = player;
 const queue = new Map();
 const searcher = new YTSearcher({
-    key: "AIzaSyDBP2GNRGm78I_oKJU2jwskdNMvAa_V65Q",
+    key: "AIzaSyDR-u6HYCKbrGak43RL0siTGMhgVypTGO8",
     revealed: true
 });
 client.once('ready', () => {
