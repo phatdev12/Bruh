@@ -15,7 +15,6 @@ const fs = require("fs");
 const ytdlDiscord = require("ytdl-core-discord");
 const yts = require("yt-search");
 const { YTSearcher } = require('ytsearcher');
-const { keep_alive } = require("./keep_alive");
 client.commands = new Collection();
 client.cooldown = new Collection();
 client.db = require("quick.db");
