@@ -14,10 +14,5 @@ module.exports = {
       .setColor('#2F3136')
       .setTimestamp()
     message.channel.send(help)
-    if(command === "spotify"){
-      const helps = new MessageEmbed()
-        .setImage('https://media.discordapp.net/attachments/863415694615642163/865951829682159616/unknown.png')
-      message.channel.send(helps)
-    }
   }
 }
