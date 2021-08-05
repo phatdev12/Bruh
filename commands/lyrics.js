@@ -17,11 +17,10 @@ module.exports = {
     const reactionFilter = (reaction, user) => ['⬅️', '➡️'].includes(reaction.emoji.name) && (message.author.id === user.id)
 
     message.channel.send("Please enter the song name now");
-      await message.channel.awaitMessages(messageFilter, { max: 1, time: 15000 }).then(async collected => {
+      await message.channel.awaitMessages(messageFilter, { max: 1, time: 1500 }).then(async collected => {
           songName = collected.first().content;
           await finder (artist, songName, message, pages)
       })
-    songName = collected.first().content;
 
     const lyricEmbed = await message.channel.send(`Lyrics page: ${currentPage+1}/${pages.length}`, pages[currentPage])
     await lyricEmbed.react('⬅️');
