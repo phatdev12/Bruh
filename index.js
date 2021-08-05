@@ -92,9 +92,6 @@ client.on("message", async message => {
     if (cmd == 'avt') {
       client.commands.get('avt').execute(message, args, client)
     }
-    if (cmd == 'lyric'){
-      client.commands.get('lyrics').execute(message, args, client, serverQueue)
-    }
     if(cmd == 'play'){
       const songss = args.slice().join(' ')
       const permissions = channel.permissionsFor(message.client.user)
