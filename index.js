@@ -329,11 +329,12 @@ client.on("message", async message => {
             return message.channel.send("You need to join the voice chat first");
         if(!serverQueue)
             return message.channel.send("There is nothing to skip!");        
-        let roleDJ = message.guild.roles.cache.find(role => role.name === "DJ")
-        if(!message.member.roles.cache.get(roleDJ.id)){
-          message.channel.send("You don't have DJ role")
-        }
+        let roleN = message.guild.roles.cache.find(role => role.name === "DJ")
+
+        if(!message.member.roles.cache.get(roleN.id))
+            return message.channel.send("You don't have the DJ role");
         serverQueue.connection.dispatcher.end();
+        serverQueue.skipVotes = [];
     }
     function vSkip (serverQueue){
       if (!serverQueue) return message.channel.send("No song to skip");
