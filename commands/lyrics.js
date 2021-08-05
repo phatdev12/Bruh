@@ -4,7 +4,7 @@ const { setSizeDependencies } = require('mathjs');
 const lyricFinder = require('lyrics-finder');
 module.exports = {
   name: 'lyrics',
-  execute(message, args, client, serverQueue){
+  async execute(message, args, client, serverQueue){
     if (args.length < 1)
         return message.channel.send("Please enter the artist name first. !lyrics <Artist Name>")
     
