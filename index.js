@@ -111,15 +111,17 @@ client.on("message", async message => {
     if(cmd == 'stop'){
       stop(message, serverQueue)
     }
-    if(cmd == 'skip'){
+    if(cmd == 'forse' || cmd == 'fskip'){
       skip(message, serverQueue)
+    }
+    if(cmd == 'skip'){
+      vSkip(serverQueue)
     }
     if (cmd == 'say'){
       client.commands.get('say').execute(message, args, client)
     }
     if (cmd == 'wiki'){
         client.commands.get('wiki').execute(message, args, client)
-        
     }
     if (cmd == 'chat'){
       client.commands.get('chat').execute(message, args, client)
@@ -329,8 +331,30 @@ client.on("message", async message => {
         if(!message.member.voice.channel)
             return message.channel.send("You need to join the voice chat first");
         if(!serverQueue)
-            return message.channel.send("There is nothing to skip!");
+            return message.channel.send("There is nothing to skip!");        
+        let roleDJ = message.guild.roles.cache.find(role => role.name === "DJ")
+        if(!message.member.roles.cache.get(roleDJ.id)){
+          message.channel.send("You don't have DJ role")
+        }
         serverQueue.connection.dispatcher.end();
+    }
+    function vSkip (serverQueue){
+      if (!serverQueue) return message.channel.send("No song to skip");
+      if (message.member.voice.channel != message.guild.me.voice.channel) return message.reply("You are not in voice channel")
+      let usersC = message.member.voice.channel.members.size;
+      let required = Math.ceil(usersC/2);
+
+      if(serverQueue.skipVotes.includes(message.member.id))
+          return message.channel.send("You already voted to skip!")
+
+      serverQueue.skipVotes.push(message.member.id)
+      message.channel.send(`You voted to skip the song ${serverQueue.skipVotes.length}/${required} votes`)
+
+      if(serverQueue.skipVotes.length >= required){
+          serverQueue.connection.dispatcher.end();
+          serverQueue.skipVotes = [];
+          message.channel.send("Song has been skipped")
+      }
     }
     function loop(args, serverQueue){
       if (args.length < 1) return message.channel.send("Please specify what loop you want `br!loop <all/one/off>`")
@@ -359,25 +383,6 @@ client.on("message", async message => {
             message.channel.send("Loop has been turned off!")
           break;
       };
-    }
-    function doKissAction() {
-        var rand = [
-            'https://media2.giphy.com/media/G3va31oEEnIkM/giphy.gif',
-            'https://media1.tenor.com/images/f5167c56b1cca2814f9eca99c4f4fab8/tenor.gif?itemid=6155657',
-            'https://media.tenor.com/images/fbb2b4d5c673ffcf8ec35e4652084c2a/tenor.gif',
-            'https://media.giphy.com/media/ZRSGWtBJG4Tza/giphy.gif',
-            'https://media.giphy.com/media/oHZPerDaubltu/giphy.gif',
-            'https://acegif.com/wp-content/uploads/anime-kiss-m.gif',
-            'https://media.giphy.com/media/bm2O3nXTcKJeU/giphy.gif',
-            'https://media.giphy.com/media/nyGFcsP0kAobm/giphy.gif',
-            'https://media0.giphy.com/media/KH1CTZtw1iP3W/source.gif',
-            'https://media.giphy.com/media/l2Je2M4Nfrit0L7sQ/giphy.gif',
-            'https://media.giphy.com/media/HKQZgx0FAipPO/giphy.gif',
-            'https://media.giphy.com/media/prBaGUi1Vmy9a/giphy.gif'
-
-        ];
-     
-        return rand[Math.floor(Math.random() * rand.length)];
     }
 });
 function xp(message) {
