@@ -257,7 +257,10 @@ client.on("message", async message => {
                 img: songInfo.videoDetails.thumbnails,
                 second: songInfo.videoDetails.lengthSeconds
             };
- 
+            if(song.url == null){
+              message.channel.send("Cannot play this song")
+              return
+            }
             if(!serverQueue){
                 const queueConstructor = {
                     txtChannel: message.channel,
@@ -324,7 +327,9 @@ client.on("message", async message => {
         if(!message.member.voice.channel)
             return message.channel.send("You need to join the voice chat first!")
         serverQueue.songs = [];
-        
+        if(serverQueue.connection.dispatcher.end() == null){
+          return
+        }
         serverQueue.connection.dispatcher.end();
     }
     function skip (message, serverQueue){
@@ -332,6 +337,9 @@ client.on("message", async message => {
             return message.channel.send("You need to join the voice chat first");
         if(!serverQueue)
             return message.channel.send("There is nothing to skip!");
+        if(serverQueue.connection.dispatcher.end() == null){
+          return
+        }
         serverQueue.connection.dispatcher.end();
     }
     function loop(args, serverQueue){
