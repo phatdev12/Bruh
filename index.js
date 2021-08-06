@@ -249,6 +249,8 @@ client.on("message", async message => {
         if(!vc){
             return message.channel.send("Please join a voice chat first");
         }else{
+          if(result.first == null)
+            return message.channel.send("There are no results found");
             let song = {
                 title: songInfo.videoDetails.title,
                 url: songInfo.videoDetails.video_url,
