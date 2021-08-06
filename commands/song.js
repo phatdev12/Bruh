@@ -5,7 +5,7 @@ module.exports = {
   name: 'song',
   async execute(message, args, client, serverQueue, searcher, ytdl){
     let results = await searcher.search(args.join(" "), { type: "video" })
-    const songInfos = await ytdl.getInfo(result.first.url)
+    const songInfos = await ytdl.getInfo(results.first.url)
     let song = {
         title: songInfos.videoDetails.title,
         url: songInfos.videoDetails.video_url,
