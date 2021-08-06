@@ -8,6 +8,7 @@ const buttonClient = new discordButtons(client)
 const player = new Player(client);
 require('discord-buttons')(client);
 const ytdl = require('ytdl-core');
+const keepalive = require('./keep_alive')
 const translator = require('@iamtraction/google-translate')
 const weather = require("weather-js");
 const config = require('./package.json');
