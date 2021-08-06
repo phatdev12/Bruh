@@ -1,8 +1,11 @@
 const { MessageEmbed, RichEmbed } = require("discord.js");
 
+
 module.exports = {
   name: 'song',
-  execute(message, args, client, serverQueue, results, songInfos){
+  execute(message, args, client, serverQueue, searcher, ytdl){
+    let results = await searcher.search(args.join(" "), { type: "video" })
+    const songInfos = await ytdl.getInfo(result.first.url)
     let song = {
         title: songInfos.videoDetails.title,
         url: songInfos.videoDetails.video_url,
