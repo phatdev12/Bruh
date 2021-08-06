@@ -57,12 +57,12 @@ client.on("message", async message => {
     //const queues = queue
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const serverQueue = queue.get(message.guild.id);
-    let result = await searcher.search(args.join(" "), { type: "video" })
-    if(result.first.url == null){
+    let results = await searcher.search(args.join(" "), { type: "video" })
+    if(results.first.url == null){
       message.channel.send('Can\'t play this song')
       return
     }
-    const songInfo = await ytdl.getInfo(result.first.url)
+    const songInfos = await ytdl.getInfo(result.first.url)
     xp(message);
     const channel = message.member.voice.channel;
     const cmd = args.shift().toLowerCase();
@@ -245,7 +245,7 @@ client.on("message", async message => {
       client.commands.get('remove').execute(message, args, client, serverQueue)
     }
     if (cmd == 'song'){
-      client.commands.get('song').execute(message, args, client, serverQueue, result, songInfo)
+      client.commands.get('song').execute(message, args, client, serverQueue, results, songInfos)
     }
     async function execute(message, serverQueue){
       try{
@@ -253,6 +253,12 @@ client.on("message", async message => {
         if(!vc){
             return message.channel.send("Please join a voice chat first");
         }else{
+          let result = await searcher.search(args.join(" "), { type: "video" })
+          if(result.first.url == null){
+            message.channel.send('Can\'t play this song')
+            return
+          }
+          const songInfo = await ytdl.getInfo(result.first.url)
           if(result.first == null)
             return message.channel.send("There are no results found");
             let song = {
