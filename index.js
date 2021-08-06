@@ -100,14 +100,7 @@ client.on("message", async message => {
       client.commands.get('lyrics').execute(message, args, client, serverQueue)
     }
     if(cmd == 'play'){
-      const songss = args.slice().join(' ')
-      const permissions = channel.permissionsFor(message.client.user)
-      if(!permissions.has('CONNECT')) return message.reply('I Dont Have Perms To Connect to The VC You Are In.').then(serverQueue.connection.dispatcher.end()) // If BOT Doesnot Has Connect Perms to Connect to VC.
-      if(!permissions.has('SPEAK')) return message.reply('I Dont Have perms To Speak In The VC, How Can I PLay Music.')
-      else{
-        message.channel.send(`**Searching** \`${songss}\``)
-        execute(message, serverQueue)
-      }
+      execute(message, serverQueue)
     }
     if(cmd == 'loop'){
       loop(args, serverQueue)
@@ -249,11 +242,16 @@ client.on("message", async message => {
     }
     async function execute(message, serverQueue){
       try{
+        const permissions = channel.permissionsFor(message.client.user)
+        if(!permissions.has('CONNECT')) return message.reply('I Dont Have Perms To Connect to The VC You Are In.').then(serverQueue.connection.dispatcher.end()) // If BOT Doesnot Has Connect Perms to Connect to VC.
+        if(!permissions.has('SPEAK')) return message.reply('I Dont Have perms To Speak In The VC, How Can I PLay Music.')
         let vc = message.member.voice.channel;
         if(!vc){
             return message.channel.send("Please join a voice chat first");
         }else{
           let result = await searcher.search(args.join(" "), { type: "video" })
+          const songss = args.slice().join(' ')
+          message.channel.send(`**Searching** \`${songss}\``)
           if(result.first.url == null){
             message.channel.send('Can\'t play this song')
             return
