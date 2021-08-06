@@ -292,7 +292,7 @@ client.on("message", async message => {
         }
       }
       catch(err){
-        message.channel.send("Can't play other links, please use Youtube link")
+        message.reply("Can't play")
       }
     }
     function play(guild, song){
