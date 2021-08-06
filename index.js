@@ -58,6 +58,10 @@ client.on("message", async message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const serverQueue = queue.get(message.guild.id);
     let result = await searcher.search(args.join(" "), { type: "video" })
+    if(result.first.url == null){
+      message.channel.send('Can\'t play this song')
+      return
+    }
     const songInfo = await ytdl.getInfo(result.first.url)
     xp(message);
     const channel = message.member.voice.channel;
