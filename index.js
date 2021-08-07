@@ -235,65 +235,57 @@ client.on("message", async message => {
       client.commands.get('song').execute(message, args, client, serverQueue, searcher, ytdl)
     }
     async function execute(message, serverQueue){
-      try{
-        const permissions = channel.permissionsFor(message.client.user)
-        if(!permissions.has('CONNECT')) return message.reply('I Dont Have Perms To Connect to The VC You Are In.').then(serverQueue.connection.dispatcher.end()) // If BOT Doesnot Has Connect Perms to Connect to VC.
-        if(!permissions.has('SPEAK')) return message.reply('I Dont Have perms To Speak In The VC, How Can I PLay Music.')
-        let vc = message.member.voice.channel;
-        if(!vc){
-            return message.channel.send("Please join a voice chat first");
-        }else{
-          let result = await searcher.search(args.join(" "), { type: "video" })
-          const songss = args.slice().join(' ')
-          message.channel.send(`**Searching** \`${songss}\``)
-          if(result.first.url == null){
-            message.channel.send('Can\'t play this song')
+      const permissions = channel.permissionsFor(message.client.user)
+      if(!permissions.has('CONNECT')) return message.reply('I Dont Have Perms To Connect to The VC You Are In.').then(serverQueue.connection.dispatcher.end()) // If BOT Doesnot Has Connect Perms to Connect to VC.
+      if(!permissions.has('SPEAK')) return message.reply('I Dont Have perms To Speak In The VC, How Can I PLay Music.')
+      let vc = message.member.voice.channel;
+      if(!vc){
+          return message.channel.send("Please join a voice chat first");
+      }else{
+        let result = await searcher.search(args.join(" "), { type: "video" })
+        const songss = args.slice().join(' ')
+        message.channel.send(`**Searching** \`${songss}\``)
+        const songInfo = await ytdl.getInfo(result.first.url)
+        if(result.first == null)
+          return message.channel.send("There are no results found");
+          let song = {
+              title: songInfo.videoDetails.title,
+              url: songInfo.videoDetails.video_url,
+              img: songInfo.videoDetails.thumbnails,
+              second: songInfo.videoDetails.lengthSeconds
+          };
+          if(song.url == null){
+            message.channel.send("Cannot play this song")
             return
           }
-          const songInfo = await ytdl.getInfo(result.first.url)
-          if(result.first == null)
-            return message.channel.send("There are no results found");
-            let song = {
-                title: songInfo.videoDetails.title,
-                url: songInfo.videoDetails.video_url,
-                img: songInfo.videoDetails.thumbnails,
-                second: songInfo.videoDetails.lengthSeconds
-            };
-            if(song.url == null){
-              message.channel.send("Cannot play this song")
-              return
-            }
-            if(!serverQueue){
-                const queueConstructor = {
-                    txtChannel: message.channel,
-                    vChannel: vc,
-                    connection: null,
-                    songs: [],
-                    volume: 50,
-                    playing: true
-                };
-                queue.set(message.guild.id, queueConstructor);
- 
-                queueConstructor.songs.push(song);
- 
-                try{
-                    let connection = await vc.join();
-                    queueConstructor.connection = connection;
-                    play(message.guild, queueConstructor.songs[0]);
-                }catch (err){
-                    console.error(err);
-                    queue.delete(message.guild.id);
-                    return message.channel.send(`Unable to join the voice chat ${err}`)
-                }
-            }else{
-                serverQueue.songs.push(song);
-                return message.channel.send(`The song has been added ${song.url}`);
-            }
-        }
+          if(!serverQueue){
+              const queueConstructor = {
+                  txtChannel: message.channel,
+                  vChannel: vc,
+                  connection: null,
+                  songs: [],
+                  volume: 50,
+                  playing: true
+              };
+              queue.set(message.guild.id, queueConstructor);
+
+              queueConstructor.songs.push(song);
+
+              try{
+                  let connection = await vc.join();
+                  queueConstructor.connection = connection;
+                  play(message.guild, queueConstructor.songs[0]);
+              }catch (err){
+                  console.error(err);
+                  queue.delete(message.guild.id);
+                  return message.channel.send(`Unable to join the voice chat ${err}`)
+              }
+          }else{
+              serverQueue.songs.push(song);
+              return message.channel.send(`The song has been added ${song.url}`);
+          }
       }
-      catch(err){
-        message.reply("Can't play")
-      }
+    }
     }
     function play(guild, song){
         const serverQueue = queue.get(guild.id);
