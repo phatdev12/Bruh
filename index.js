@@ -286,7 +286,6 @@ client.on("message", async message => {
           }
       }
     }
-    }
     function play(guild, song){
         const serverQueue = queue.get(guild.id);
         if(!song){
