@@ -235,6 +235,7 @@ client.on("message", async message => {
       client.commands.get('song').execute(message, args, client, serverQueue, searcher, ytdl)
     }
     async function execute(message, serverQueue){
+      if(message.deletable) message.delete()
       const permissions = channel.permissionsFor(message.client.user)
       if(!permissions.has('CONNECT')) return message.reply('I Dont Have Perms To Connect to The VC You Are In.').then(serverQueue.connection.dispatcher.end()) // If BOT Doesnot Has Connect Perms to Connect to VC.
       if(!permissions.has('SPEAK')) return message.reply('I Dont Have perms To Speak In The VC, How Can I PLay Music.')
