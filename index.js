@@ -13,6 +13,7 @@ const weather = require("weather-js");
 const config = require('./package.json');
 const fs = require("fs");
 const ytdlDiscord = require("ytdl-core-discord");
+const keepAlive = require('./keep_alive')
 const yts = require("yt-search");
 const { YTSearcher } = require('ytsearcher');
 client.commands = new Collection();
