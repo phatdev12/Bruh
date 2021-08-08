@@ -175,10 +175,11 @@ header {
   font-weight: 300;
   z-index: 1000;
   width: 100%;
-  padding: 5% 40px;
+  padding: 0% 40px;
   font-size: 48px;
   text-align: center;
   line-height: 56px;
+  margin-top: 5%;
   text-shadow: 0px 4px 7px rgba(0, 0, 0, 0.46);
   color: white;
   animation: transition1;
@@ -222,6 +223,9 @@ header {
     top: 15px;
     right: 35px;
   }
+  .button_invite{
+    margin-top: 10%;
+  }
 }
 
 @media only screen and (max-width: 800px) {
@@ -231,6 +235,9 @@ header {
   }
   .menu {
     display: initial;
+  }
+  .button_invite{
+    margin-top: 20%;
   }
 }
 .container{
@@ -316,4 +323,35 @@ header {
   100%{
     transform: translateY(-250px) scaleX(10);
   }
+}
+.hello{
+  width: 100%;
+  padding: 50px 0px;
+}
+.invite_vote{
+  position: absolute;
+  padding-top: 160px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.button_invite{
+  background-color: #FFD12F;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  text-decoration: none;
+  padding: 10px 35px;
+  margin: 10px 20px;
+  margin-top: 0;
+  border-radius: 20px;
+  z-index: 999;
+  transition-duration: 1s;
+}
+.button_invite:nth-child(2){
+  background-color: #1d1a31b2;
+  border: 1px solid #c9c9c9;
+}
+.button_invite:nth-child(1):hover{
+  background-color: #ffe06f;
 }
