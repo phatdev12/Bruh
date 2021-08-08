@@ -4,12 +4,15 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background: #11101d;
+
 }
 .home{
   width: 100%;
   height: 100vh;
-  background: #11101d;
+  background: linear-gradient( #11101d,#11101dbb), url('./images/pexels-elviss-railijs-bitāns-1389429.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 header {
   width: 100%;
@@ -18,13 +21,19 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 15px 9%;
-  background-color: #11101d;
+  background-color: #11101d00;
   transition-duration: 0.5s;
+}
+nav{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .sticky{
   position: fixed;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.384);
   padding: 12px 9%;
+  background-color: #11101d;
 }
 
 .logo{
@@ -303,7 +312,7 @@ header {
   border-radius: 50%;
   animation: animate 5s linear infinite;
   opacity: 0;
-  filter: blur(8px);
+  filter: blur(9px);
   animation-delay: calc(var(--i) * -0.5s);
 }
 @keyframes animate{
@@ -354,4 +363,14 @@ header {
 }
 .button_invite:nth-child(1):hover{
   background-color: #ffe06f;
+}
+.button_invite:nth-child(2):hover{
+  background-color: #69696971;
+}
+.about{
+  height: 500px;
+  width: 100%;
+  margin-top: -50px;
+  padding: 50px 10px;
+  background: #0e0c18;
 }
