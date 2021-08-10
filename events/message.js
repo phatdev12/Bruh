@@ -1,16 +1,16 @@
-module.exports = {
-    name: 'message',
-    async execute(message, Discord, searcher, client){
-        const queue = new Map();
-        const ytdl = require('ytdl-core');
-        const prefix = 'br!';
-        if (!message.content.startsWith(prefix) || message.author.bot) return;
-        const args = message.content.slice(prefix.length).trim().split(/ +/g);
-        const cmd = args.shift().toLowerCase();
-        const serverQueue = queue.get(message.guild.id);
-        const channel = message.member.voice.channel;
-        const command = client.commands.get(cmd);
-        if(command) command.execute(client, message, args, serverQueue, channel,searcher, ytdl, Discord);
+module.exports = (client, message) => {
+    if (message.author.bot || message.channel.type === 'dm') return;
+
+    const prefix = client.config.discord.prefix;
+
+    if (message.content.indexOf(prefix) !== 0) return;
+
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
+
+    const cmd = client.commands.get(command) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(command));
+
+    if (cmd) cmd.execute(client, message, args);
         // if(cmd == 'play'){
         //     execute(message, serverQueue)
         // }
@@ -217,6 +217,5 @@ module.exports = {
         //         message.channel.send("Loop has been turned off!")
         //         break;
         //     };
-        // }
-    }  
+        // } 
 }

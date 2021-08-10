@@ -23,9 +23,21 @@ client.events = new Collection();
 client.db = require("quick.db");
 const mongoose = require('mongoose');
 
-['command_handler', 'events_handler'].forEach(handler => {
-  require(`./handlers/${handler}`)(client, Discord)
-})
+const commands_file = fs.readdirSync('./commands/').filter(files => files.endsWith('.js'));
+
+for (const file of commands_file) {
+    const command = require(`./commands/${dirs}/${file}`);
+    console.log(`Loading command ${file}`);
+    client.commands.set(command.name.toLowerCase(), command);
+};
+
+const events = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+
+for (const file of events) {
+    console.log(`Loading discord.js event ${file}`);
+    const event = require(`./events/${file}`);
+    client.on(file.split(".")[0], event.bind(null, client));
+};
 
 client.config = {
     cooldown: 15000
