@@ -28,7 +28,7 @@ const commands_file = fs.readdirSync('./commands/').filter(files => files.endsWi
 for (const file of commands_file) {
     const command = require(`./commands/${file}`);
     console.log(`Loading command ${file}`);
-    client.commands.set(command.name.toLowerCase(), command);
+    client.commands.set(command.name, command);
 };
 
 const events = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
