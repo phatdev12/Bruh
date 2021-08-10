@@ -2,6 +2,7 @@ module.exports = async (client, message) => {
     const queue = new Map();
     const ytdl = require('ytdl-core');
     if (message.author.bot || message.channel.type === 'dm') return;
+    const { YTSearcher } = require('ytsearcher');
     const searcher = new YTSearcher({
         key: "AIzaSyDR-u6HYCKbrGak43RL0siTGMhgVypTGO8",
         revealed: true
