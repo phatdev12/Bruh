@@ -19,6 +19,7 @@ const { YTSearcher } = require('ytsearcher');
 client.commands = new Collection();
 client.cooldown = new Collection();
 client.db = require("quick.db");
+const mongoose = require('mongoose');
 const commandfile = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
 for (const file of commandfile ){
   const command = require(`./commands/${file}`);
@@ -38,6 +39,16 @@ const searcher = new YTSearcher({
     key: "AIzaSyDR-u6HYCKbrGak43RL0siTGMhgVypTGO8",
     revealed: true
 });
+mongoose.connect(process.env.URL || 'mongodb+srv://bruhh:bruhh123@cluster0.nxg3f.mongodb.net/test', {
+  useNewUrlParse: true,
+  useUnifiedTopology: true,
+  userFindAndModify: false
+}).then(() => [
+  console.log('Connected database')
+]).catch((err) => {
+  console.log(err)
+})
+
 client.once('ready', () => {
     const serverIn = client.guilds.cache.size;
     console.log('Is Online !')
@@ -49,7 +60,7 @@ client.once('ready', () => {
             buttons: [{label: "My Website", url: "https://bruhhbot.000webhostapp.com/"}]
         },
         status: 'LISTENING'
-    }) 
+    })
 });
 client.on("message", async message => {
     if (!message.content.startsWith(prefix) || message.author.bot) return
