@@ -17,7 +17,7 @@ module.exports = {
         }
         
         async function videoHandle(songInfo, message, vc){
-            const serverQueue = queue.get(guild.id);
+            const serverQueue = queue.get(message.guild.id);
             let song = {
                 title: songInfo.videoDetails.title,
                 url: songInfo.videoDetails.video_url,
