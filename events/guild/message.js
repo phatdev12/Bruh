@@ -1,4 +1,4 @@
-module.exports = (Discord, client, message, searcher) => {
+module.exports = (client, Discord, message, searcher) => {
     const ytdl = require('ytdl-core');
     const prefix = 'br!';
     if (!message.content.startsWith(prefix) || message.author.bot) return;
