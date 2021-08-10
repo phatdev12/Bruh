@@ -26,7 +26,7 @@ const mongoose = require('mongoose');
 const commands_file = fs.readdirSync('./commands/').filter(files => files.endsWith('.js'));
 
 for (const file of commands_file) {
-    const command = require(`./commands/${dirs}/${file}`);
+    const command = require(`./commands/${file}`);
     console.log(`Loading command ${file}`);
     client.commands.set(command.name.toLowerCase(), command);
 };
