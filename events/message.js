@@ -1,4 +1,4 @@
-module.exports = async (client, message) => {
+module.exports = async (client, message, queue, searcher) => {
     if (message.author.bot || message.channel.type === 'dm') return;
 
     const prefix = 'br!';
@@ -7,10 +7,11 @@ module.exports = async (client, message) => {
 
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
+    const serverQueue = queue.get(message.guild.id);
 
     const cmd = client.commands.get(command) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(command));
 
-    if (cmd) cmd.execute(message, args, client);
+    if (cmd) cmd.execute(message, args, client, queue, searcher);
     if(cmd == 'play'){
         execute(message, serverQueue)
     }

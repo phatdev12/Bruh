@@ -46,6 +46,7 @@ let settings = {method: "Get"};
 let data;
 const prefix = 'br!';
 
+const queue = new Map();
 client.player = player;
 const searcher = new YTSearcher({
     key: "AIzaSyDR-u6HYCKbrGak43RL0siTGMhgVypTGO8",
