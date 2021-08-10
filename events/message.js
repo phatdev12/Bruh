@@ -1,4 +1,5 @@
 module.exports = async (client, message, queue, searcher) => {
+    const queue = new Map();
     if (message.author.bot || message.channel.type === 'dm') return;
 
     const prefix = 'br!';
@@ -23,71 +24,6 @@ module.exports = async (client, message, queue, searcher) => {
     }
     if(cmd == 'skip'){
         skip(message, serverQueue)
-    }
-    if (cmd == 'spotify'){
-        let user = message.mentions.users.first() || message.author;
-
-        if(user.presence.activities !== null && user.presence.activities.type === 'LISTENING' && user.presence.activities[0].name === 'Spotify') {
-
-            let trackIMG = `https://i.scdn.co/image/${user.presence.activities[0].assets.largeImage.slice(8)}`;
-            let trackURL = `https://open.spotify.com/track/${user.presence.activities[0].syncID}`;
-            let trackName = user.presence.activities[0].details;
-            let trackAuthor = user.presence.activities[0].state;
-            let trackAlbum = user.presence.activities[0].assets.largeText;
-
-            const embed = new MessageEmbed()
-                .setAuthor('Spotify Track Info', 'https://media.discordapp.net/attachments/848893653857468417/850944364960022568/Artboard_1.png?width=434&height=434')
-                .setColor("#ffb145")
-                .setThumbnail(trackIMG)
-                .addField('Song Name', trackName, true)
-                .addField('Album', trackAlbum, true)
-                .addField('Author', trackAuthor, false)
-                .addField('Listen to Track', `${trackURL}`, false)
-                .setFooter(message.member.displayName, message.author.displayAvatarURL())
-                .setTimestamp()
-
-            message.channel.send(embed);
-        }else{
-            message.channel.send('**This user isn\'t listening to Spotify!**');
-        }
-    }
-    if (cmd == 'wikip'){
-        const wiki1 = args.slice().join(' ')
-        if(!wiki1) return message.reply('Provide A Query To Search.') // If Nothing Is Searched
-        const url = `https://vi.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(wiki1)}` // From Here BOT Will Search For It
-
-        let response
-        try {
-            response = await fetch(url).then(res => res.json())
-        }      
-        catch (e) {
-            return message.reply('An Error Occured, Try Again.')
-        }
-
-        try {
-            if(response.type === 'disambiguation') { // If Their Are Many Results With Same Seached Topic
-                const embed = new MessageEmbed()
-                .setColor('RANDOM')
-                .setTitle(response.title)
-                .setURL(response.content_urls.desktop.page)
-                .setDescription([`
-                ${response.extract}
-                Links For Topic You Searched [Link](${response.content_urls.desktop.page}).`]) // If Their Are Many Results With Same Seached Topic
-                message.channel.send(embed)
-            }
-            else { // If Only One Result
-                const embed = new MessageEmbed()
-                .setColor('RANDOM')
-                .setTitle(response.title)
-                .setThumbnail(response.thumbnail.source)
-                .setURL(response.content_urls.desktop.page)
-                .setDescription(response.extract)
-                message.channel.send(embed)
-            }
-        }
-        catch(err){
-            return message.reply('Provide A Valid Query To Search.') // If Searched Query Is Not Available
-        }
     }
     async function execute(message, serverQueue){
         const permissions = channel.permissionsFor(message.client.user)
