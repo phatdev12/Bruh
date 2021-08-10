@@ -1,1 +1,0 @@
-const profileModel = require('../../models/profile')
