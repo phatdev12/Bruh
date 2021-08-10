@@ -1,4 +1,5 @@
-const Discord,{ Util,Client, MessageEmbed, Collection } = require('discord.js');
+const Discord = require('discord.js');
+const { Util,Client, MessageEmbed, Collection } = require('discord.js');
 const { executionAsyncResource } = require('async_hooks');
 const client = new Client();
 const { Player } = require("discord-player");
