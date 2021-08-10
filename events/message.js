@@ -1,4 +1,5 @@
-module.exports = async (client, message, queue, searcher) => {
+module.exports = async (client, message, searcher) => {
+    const queue = new Map();
     if (message.author.bot || message.channel.type === 'dm') return;
 
     const prefix = 'br!';
@@ -7,7 +8,7 @@ module.exports = async (client, message, queue, searcher) => {
 
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
-    const serverQueue = queue[0].get(message.guild.id);
+    const serverQueue = queue.get(message.guild.id);
 
     const cmd = client.commands.get(command) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(command));
 
