@@ -40,7 +40,7 @@ const searcher = new YTSearcher({
     revealed: true
 });
 mongoose.connect(process.env.URL || 'mongodb+srv://bruhh:bruhh123@cluster0.nxg3f.mongodb.net/test', {
-  useNewUrlParse: true,
+  useNewUrlParser: true,
   useUnifiedTopology: true,
   userFindAndModify: false
 }).then(() => [
