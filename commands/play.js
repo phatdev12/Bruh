@@ -1,6 +1,6 @@
 module.exports = {
     name: 'play',
-    async execute(message, args, client, queue, searcher){
+    async execute(message, args, client, queue, searcher, ytdl){
         let vc = message.member.voice.channel;
         const permissions = vc.permissionsFor(message.client.user)
         if(!permissions.has('CONNECT')) return message.reply('I Dont Have Perms To Connect to The VC You Are In.').then(serverQueue.connection.dispatcher.end()) // If BOT Doesnot Has Connect Perms to Connect to VC.

@@ -1,7 +1,11 @@
-module.exports = async (client, message, searcher) => {
+module.exports = async (client, message) => {
     const queue = new Map();
+    const ytdl = require('ytdl-core');
     if (message.author.bot || message.channel.type === 'dm') return;
-
+    const searcher = new YTSearcher({
+        key: "AIzaSyDR-u6HYCKbrGak43RL0siTGMhgVypTGO8",
+        revealed: true
+    });
     const prefix = 'br!';
 
     if (message.content.indexOf(prefix) !== 0) return;
@@ -12,7 +16,7 @@ module.exports = async (client, message, searcher) => {
 
     const cmd = client.commands.get(command) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(command));
 
-    if (cmd) cmd.execute(message, args, client, queue, searcher);
+    if (cmd) cmd.execute(message, args, client, queue, searcher, ytdl);
     if(cmd == 'play'){
         execute(message, serverQueue)
     }
