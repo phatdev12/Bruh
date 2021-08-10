@@ -10,7 +10,7 @@ module.exports = {
         const serverQueue = queue.get(message.guild.id);
         const channel = message.member.voice.channel;
         const command = client.commands.get(cmd);
-        if(command) command.execute(message, args, client, serverQueue, channel,searcher, ytdl, Discord);
+        if(command) command.execute(client, message, args, serverQueue, channel,searcher, ytdl, Discord);
         // if(cmd == 'play'){
         //     execute(message, serverQueue)
         // }

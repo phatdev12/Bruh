@@ -35,7 +35,6 @@ let data;
 const prefix = 'br!';
 
 client.player = player;
-const queue = new Map();
 const searcher = new YTSearcher({
     key: "AIzaSyDR-u6HYCKbrGak43RL0siTGMhgVypTGO8",
     revealed: true
