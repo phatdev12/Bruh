@@ -24,7 +24,7 @@ client.db = require("quick.db");
 const mongoose = require('mongoose');
 
 ['command_handler', 'events_handler'].forEach(handler => {
-  require(`./handlers/${handler}`)
+  require(`./handlers/${handler}`)(client, Discord)
 })
 
 client.config = {
