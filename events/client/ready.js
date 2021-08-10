@@ -1,4 +1,4 @@
-module.exports = () => {
+module.exports = (client) => {
     console.log('Is online')
     const serverIn = client.guilds.cache.size;
     client.user.setPresence({
