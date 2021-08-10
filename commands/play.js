@@ -1,10 +1,10 @@
 module.exports = {
     name: 'play',
     async execute(message, args, client, queue, searcher){
-        const permissions = channel.permissionsFor(message.client.user)
+        let vc = message.member.voice.channel;
+        const permissions = vc.permissionsFor(message.client.user)
         if(!permissions.has('CONNECT')) return message.reply('I Dont Have Perms To Connect to The VC You Are In.').then(serverQueue.connection.dispatcher.end()) // If BOT Doesnot Has Connect Perms to Connect to VC.
         if(!permissions.has('SPEAK')) return message.reply('I Dont Have perms To Speak In The VC, How Can I PLay Music.')
-        let vc = message.member.voice.channel;
         if(!vc){
             return message.channel.send("Please join a voice chat first");
         }else{
