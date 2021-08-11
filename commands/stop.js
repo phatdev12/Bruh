@@ -1,7 +1,6 @@
 module.exports = {
     name: 'stop',
-    async execute(message, args, client, queue, searcher){
-        const serverQueue = queue.get(message.guild.id)
+    async execute(message, args, client, serverQueue, searcher){
         if(!serverQueue)
                 return message.channel.send("There is no music playing!")
         if(message.member.voice.channel != message.guild.me.voice.channel)

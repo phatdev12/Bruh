@@ -1,24 +1,13 @@
 module.exports = {
     name: 'skip',
     async execute(message, args, client, serverQueue, searcher){
+        if(!message.member.voice.channel)
+            return message.channel.send("You need to join the voice chat first");
         if(!serverQueue)
-            return message.channel.send("There is no music currently playing!");
-        if(message.member.voice.channel != message.guild.me.voice.channel)
-            return message.channel.send("You are not in the voice channel!");
-
-        let usersC = message.member.voice.channel.members.size;
-        let required = Math.ceil(usersC/2);
-
-        if(serverQueue.skipVotes.includes(message.member.id))
-            return message.channel.send("You already voted to skip!")
-
-        serverQueue.skipVotes.push(message.member.id)
-        message.channel.send(`You voted to skip the song ${serverQueue.skipVotes.length}/${required} votes`)
-
-        if(serverQueue.skipVotes.length >= required){
-            serverQueue.connection.dispatcher.end();
-            serverQueue.skipVotes = [];
-            message.channel.send("Song has been skipped")
+            return message.channel.send("There is nothing to skip!");
+        if(serverQueue.connection.dispatcher.end() == null){
+            return
         }
+        serverQueue.connection.dispatcher.end();
     }
 }
