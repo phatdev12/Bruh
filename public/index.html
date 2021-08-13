@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="home">
+  <div id="header" class="home" data-parallax="scroll" data-z-index="1">
     <header>
       <a class="logo" href="/">Bruhh</a>
       <nav>
@@ -72,7 +72,18 @@
       </div>
     </div>
     <div class="about">
-      <div class="card"></div>
+      <img class="card" src="./images/about.png" alt="none">
+      <div class="text_info">
+        <img class="info_icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDQ1Ljk5OSA0NS45OTkiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiIGNsYXNzPSIiPjxnPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgoJPGc+CgkJPHBhdGggZD0iTTM5LjI2NCw2LjczNmMtOC45ODItOC45ODEtMjMuNTQ1LTguOTgyLTMyLjUyOCwwYy04Ljk4Miw4Ljk4Mi04Ljk4MSwyMy41NDUsMCwzMi41MjhjOC45ODIsOC45OCwyMy41NDUsOC45ODEsMzIuNTI4LDAgICAgQzQ4LjI0NSwzMC4yODEsNDguMjQ0LDE1LjcxOSwzOS4yNjQsNi43MzZ6IE0yNS45OTksMzNjMCwxLjY1Ny0xLjM0MywzLTMsM3MtMy0xLjM0My0zLTNWMjFjMC0xLjY1NywxLjM0My0zLDMtM3MzLDEuMzQzLDMsM1YzM3ogICAgIE0yMi45NDYsMTUuODcyYy0xLjcyOCwwLTIuODgtMS4yMjQtMi44NDQtMi43MzVjLTAuMDM2LTEuNTg0LDEuMTE2LTIuNzcxLDIuODc5LTIuNzcxYzEuNzY0LDAsMi44OCwxLjE4OCwyLjkxNywyLjc3MSAgICBDMjUuODk3LDE0LjY0OCwyNC43NDYsMTUuODcyLDIyLjk0NiwxNS44NzJ6IiBmaWxsPSIjZmYwMDc4IiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBzdHlsZT0iIiBjbGFzcz0iIj48L3BhdGg+Cgk8L2c+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPC9nPjwvc3ZnPg==" />
+        <h2 class="info_text">Bot Info</h2>
+        <p class="info">Enjoying relaxation with friends with gentle melodies is the way that Bruhh Bot gives users the most comfort.</p>
+        <p class="info">
+          <span>Using</span>
+          <span class="spans" data-tooltip="Copy" data-tooltip-position="bottom" id="span">br!play</span>
+          <span>command to listen music.</span>
+        </p>
+        <a href="command.html" class="command_btn">Command</a>
+      </div>     
     </div>
   </div>
   
@@ -84,5 +95,19 @@
     console.log('%c©BruhhMedia https://bruhh.tk/', css);
   </script>
   <script type="text/javascript" src="mobile.js"></script>
+  <script type="text/javascript" src="./js/function.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="../lib/parallax.min.js"></script>
+  <script type="text/javascript">
+    $(".spans").click(function(){
+      if($(".spans").click == true){
+        $(".spans").attr('data-tooltip', 'Copy');
+      }if($(".spans").click == false){
+        $(".spans").attr('data-tooltip', 'Copy');
+      }else{
+        $(".spans").attr('data-tooltip', 'Copied');
+      }  
+    });
+  </script>
 </body>
 </html>

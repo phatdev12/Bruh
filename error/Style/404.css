@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@600&display=swap');
+
+body{
+    margin: 0;
+    padding: 0;
+}
+.background{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient( #11101dec,#11101dd2), url('../images/back.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+h1{
+    background: rgba(100, 148, 237, 0);
+    text-decoration: none;
+    font-family: 'Rubik', sans-serif;
+    font-size: 60px;
+    font-weight: 600;
+    color: #ffffff;
+}

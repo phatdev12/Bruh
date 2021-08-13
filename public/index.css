@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+
 
 * {
   box-sizing: border-box;
@@ -9,7 +11,7 @@
 .home{
   width: 100%;
   height: 100vh;
-  background: linear-gradient( #11101d,#11101dbb), url('./images/pexels-elviss-railijs-bitāns-1389429.jpg');
+  background: linear-gradient( #11101d,#11101dbb), url('./images/back.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -235,6 +237,9 @@ nav{
   .button_invite{
     margin-top: 10%;
   }
+  .about{
+    height: 500px;
+  }
 }
 
 @media only screen and (max-width: 800px) {
@@ -368,9 +373,185 @@ nav{
   background-color: #69696971;
 }
 .about{
-  height: 500px;
+  min-height: 500px;
+  max-height: 900px;
   width: 100%;
+  display: flex;
+  flex-wrap: wrap;
   margin-top: -50px;
-  padding: 50px 10px;
+  padding: 50px 20px;
   background: #0e0c18;
+  justify-content: center;
+  margin-right: auto;
+  margin-left: auto;
+  color: #ffffff;
+}
+.card{
+  position: relative;
+  margin-top: 100px;
+  padding: 10px 35px;
+  min-width: 50px;
+  max-width: 550px;
+  min-height: auto;
+  max-height: auto;
+  transform: perspective(900px) rotateZ(-5deg) rotateX(14deg) rotateY(24deg);
+  transition: 0.6s;
+}
+.card:hover{
+  transform: perspective(700px) rotateX(0deg) rotateY(0deg);
+}
+.text_info{
+  position: relative;
+  top: 40px;
+  padding: 10px 40px;
+  flex: 1;
+}
+.info{
+  font-family: 'Rubik', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  padding: 10px 0px;
+}
+.info_text{
+  font-family: 'Rubik', sans-serif;
+  font-size: 2rem;
+  padding: 30px 0px;
+}
+.info_icon{
+  margin-top: 5px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #11101d00;
+  box-shadow: 0 0px 8px 0 rgba(255, 0, 106, 0.993), 0 0px 20px 0 rgba(255, 0, 106, 0.993);
+}
+.info span:nth-child(2){
+  background: #050508;
+  padding: 3px 5px;
+  border-radius: 5px;
+  color: rgb(255, 0, 106);
+  font-family: consolas;
+  cursor: pointer;
+  transition: 0.6s;
+}
+.info span:nth-child(2):hover{
+  font-size: 24px;
+}
+[data-tooltip] {
+    display: inline-block;
+    position: relative;
+    cursor: help;
+    padding: 4px;
+}
+/* Tooltip styling */
+[data-tooltip]:before {
+    content: attr(data-tooltip);
+    display: none;
+    position: absolute;
+    background: #000;
+    color: #fff;
+    padding: 4px 8px;
+    font-size: 14px;
+    line-height: 1.4;
+    min-width: 100px;
+    text-align: center;
+    border-radius: 4px;
+}
+/* Dynamic horizontal centering */
+[data-tooltip-position="top"]:before,
+[data-tooltip-position="bottom"]:before {
+    left: 50%;
+    -ms-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+/* Dynamic vertical centering */
+[data-tooltip-position="right"]:before,
+[data-tooltip-position="left"]:before {
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+[data-tooltip-position="top"]:before {
+    bottom: 100%;
+    margin-bottom: 6px;
+}
+[data-tooltip-position="right"]:before {
+    left: 100%;
+    margin-left: 6px;
+}
+[data-tooltip-position="bottom"]:before {
+    top: 100%;
+    margin-top: 6px;
+}
+[data-tooltip-position="left"]:before {
+    right: 100%;
+    margin-right: 6px;
+}
+
+/* Tooltip arrow styling/placement */
+[data-tooltip]:after {
+    content: '';
+    display: none;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+}
+/* Dynamic horizontal centering for the tooltip */
+[data-tooltip-position="top"]:after,
+[data-tooltip-position="bottom"]:after {
+    left: 50%;
+    margin-left: -6px;
+}
+/* Dynamic vertical centering for the tooltip */
+[data-tooltip-position="right"]:after,
+[data-tooltip-position="left"]:after {
+    top: 50%;
+    margin-top: -6px;
+}
+[data-tooltip-position="top"]:after {
+    bottom: 100%;
+    border-width: 6px 6px 0;
+    border-top-color: #000;
+}
+[data-tooltip-position="right"]:after {
+    left: 100%;
+    border-width: 6px 6px 6px 0;
+    border-right-color: #000;
+}
+[data-tooltip-position="bottom"]:after {
+    top: 100%;
+    border-width: 0 6px 6px;
+    border-bottom-color: #000;
+}
+[data-tooltip-position="left"]:after {
+    right: 100%;
+    border-width: 6px 0 6px 6px;
+    border-left-color: #000;
+}
+/* Show the tooltip when hovering */
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+    display: block;
+    z-index: 50;
+}
+.command_btn{
+  position: relative;
+  top: 5%;
+  background-color: rgb(255, 0, 106);
+  text-decoration: none;
+  font-family: 'Rubik', sans-serif;
+  padding: 10px 10px;
+  border-radius: 25px;
+  color: #FFFFFF;
+  transition: 0.6s;
+}
+.command_btn:hover{
+  box-shadow: 0 0px 8px 0 rgba(255, 0, 106, 0.993), 0 0px 20px 0 rgba(255, 0, 106, 0.993);
 }
