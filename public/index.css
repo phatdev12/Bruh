@@ -378,11 +378,11 @@ nav{
 }
 .about{
   min-height: 500px;
-  max-height: 900px;
+  max-height: 950px;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  margin-top: -50px;
+  margin-top: -10px;
   padding: 50px 20px;
   background: #0e0c18;
   justify-content: center;
@@ -409,6 +409,7 @@ nav{
   top: 40px;
   padding: 10px 40px;
   flex: 1;
+  transition-duration: 1s;
 }
 .info{
   font-family: 'Rubik', sans-serif;
@@ -416,11 +417,13 @@ nav{
   font-weight: 300;
   font-size: 20px;
   padding: 10px 0px;
+  transition-duration: 1s;
 }
 .info_text{
   font-family: 'Rubik', sans-serif;
   font-size: 2rem;
   padding: 30px 0px;
+  transition-duration: 1s;
 }
 .info_icon{
   margin-top: 5px;
@@ -429,6 +432,7 @@ nav{
   border-radius: 50%;
   background: #11101d00;
   box-shadow: 0 0px 8px 0 rgba(255, 0, 106, 0.993), 0 0px 20px 0 rgba(255, 0, 106, 0.993);
+  transition-duration: 1s;
 }
 .info span:nth-child(2){
   background: #050508;
@@ -574,4 +578,31 @@ nav{
   margin-right: auto;
   margin-left: auto;
   color: #ffffff;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #0b0a13;
+  border-radius: 0px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(255, 0, 106); 
+  border-radius: 7px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(255, 0, 106);
+}
+.card:nth-child(2){
+  transform: perspective(900px) rotateZ(2deg) rotateX(5deg) rotateY(-20deg);
+}
+.card:nth-child(2):hover{
+  transform: perspective(700px) rotateX(0deg) rotateY(0deg);
 }
