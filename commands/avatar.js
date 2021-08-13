@@ -15,7 +15,7 @@ module.exports = {
     avatar = getUserAvatar(user);
 
 
-    let embed = new discord.MessageEmbed()
+    let embed = new MessageEmbed()
         .setTitle(`Avatar ${user.tag}`)
         .setImage(avatar)
         .setColor('RANDOM')
