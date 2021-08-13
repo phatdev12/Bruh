@@ -3,7 +3,7 @@ module.exports = {
   name: 'avt',
   description: 'avatar',
   async execute(message, client, args){
-    const embed = new Discord.MessageEmbed()
+    const embed = new MessageEmbed()
  
     if(!message.mentions.users.first()){
         embed.setTitle("Your Avatar:")
