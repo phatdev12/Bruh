@@ -17,6 +17,8 @@ const ytdlDiscord = require("ytdl-core-discord");
 const keepAlive = require('./keep_alive')
 const yts = require("yt-search");
 const { YTSearcher } = require('ytsearcher');
+const { DiscordTogether } = require('discord-together');
+client.discordTogether = new DiscordTogether(client);
 client.commands = new Collection();
 client.cooldown = new Collection();
 client.events = new Collection();
@@ -128,6 +130,9 @@ client.on("message", async message => {
     }
     if (cmd == 'resume'){
       client.commands.get('resume').execute(message, args, client, serverQueue)
+    }
+    if (cmd == 'chess'){
+      client.commands.get('chess').execute(message, args, client, serverQueue)
     }
     if (cmd == 'pause'){
       client.commands.get('pause').execute(message, args, client, serverQueue)
