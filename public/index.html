@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:500&display=swap" rel="stylesheet">
   <script src="js/scroll.js" defer></script>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
 <body>
   <div id="header" class="home" data-parallax="scroll" data-z-index="1">
@@ -16,9 +17,9 @@
       <a class="logo" href="/">Bruhh</a>
       <nav>
           <ul class="nav__links">
-              <li class="menuItem"><a href="#">Home</a></li>
-              <li class="menuItem"><a href="#">Services</a></li>
-              <li class="menuItem"><a href="#">About</a></li>
+              <li class="menuItem"><a href="#">Support</a></li>
+              <li class="menuItem"><a href="#">Command</a></li>
+              <li class="menuItem"><a href="#">Vote</a></li>
           </ul>
       </nav>
       <a class="cta" href="#">Invite</a>
@@ -87,19 +88,70 @@
       </div>     
     </div>
     <div class="service">
-      <div id="text_info" class="text_info">
-        <img class="info_icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDE5MS44MTIgMTkxLjgxMiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyIDUxMiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgY2xhc3M9IiI+PGc+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+Cgk8cGF0aCBzdHlsZT0iIiBkPSJNOTUuOTA2LDBDNDMuMDIzLDAsMCw0My4wMjMsMCw5NS45MDZzNDMuMDIzLDk1LjkwNiw5NS45MDYsOTUuOTA2czk1LjkwNi00My4wMjMsOTUuOTA2LTk1LjkwNiAgIFMxNDguNzg5LDAsOTUuOTA2LDB6IE05NS45MDYsMTc2LjgxMkM1MS4yOTQsMTc2LjgxMiwxNSwxNDAuNTE4LDE1LDk1LjkwNlM1MS4yOTQsMTUsOTUuOTA2LDE1czgwLjkwNiwzNi4yOTQsODAuOTA2LDgwLjkwNiAgIFMxNDAuNTE4LDE3Ni44MTIsOTUuOTA2LDE3Ni44MTJ6IiBmaWxsPSIjZmYwNzZlIiBkYXRhLW9yaWdpbmFsPSIjMWQxZDFiIiBjbGFzcz0iIj48L3BhdGg+Cgk8cGF0aCBzdHlsZT0iIiBkPSJNNDkuNzMzLDk5Ljc4OWwxNy4yMDQtMTAuNzMzYzIuOTI4LTEuODI3LDIuMTg2LTYuMjgyLTEuMTc2LTcuMDZsLTYuNjExLTEuNTMxICAgQzY1LjA3LDY1LjU3Nyw3OS42MTUsNTUuMjYsOTYuMzI5LDU1LjI2YzE2LjQyMiwwLDMwLjk5OCw5Ljg0MiwzNy4xMzIsMjUuMDczYzEuNTQ3LDMuODQyLDUuOTE3LDUuNzAxLDkuNzU5LDQuMTU1ICAgYzMuODQyLTEuNTQ3LDUuNzAzLTUuOTE3LDQuMTU1LTkuNzU5Yy04LjQzMy0yMC45MzktMjguNDctMzQuNDctNTEuMDQ2LTM0LjQ3Yy0yMy43NjcsMC00NC4zNDUsMTUuMTc3LTUxLjkxNCwzNi43OTJsLTYuNTkyLTEuNTI3ICAgYy0zLjM2Mi0wLjc3OS01Ljk4NywyLjg5Ni00LjE2MSw1LjgyNGwxMC43MzMsMTcuMjA0QzQ1LjUyOCwxMDAuMzY4LDQ3LjkxNywxMDAuOTIyLDQ5LjczMyw5OS43ODl6IiBmaWxsPSIjZmYwNzZlIiBkYXRhLW9yaWdpbmFsPSIjMWQxZDFiIiBjbGFzcz0iIj48L3BhdGg+Cgk8cGF0aCBzdHlsZT0iIiBkPSJNMTU4LjE4OCwxMTMuNDY1TDE0Ny43ODQsOTYuMDZjLTEuMDk4LTEuODM2LTMuNDc2LTIuNDM1LTUuMzEzLTEuMzM3bC0xNy40MDUsMTAuNDA0ICAgYy0yLjk2MiwxLjc3MS0yLjMwNSw2LjIzOSwxLjA0Miw3LjA4MWw2LjY1LDEuNjc0Yy02LjYxMSwxMy44NDYtMjAuNzk1LDIyLjk1My0zNi44MTYsMjIuNjYyICAgYy0xNS43NzItMC4yODYtMjkuOTUxLTkuODU0LTM2LjEyMi0yNC4zNzhjLTEuNjItMy44MTItNi4wMjMtNS41OTEtOS44MzYtMy45N2MtMy44MTIsMS42Mi01LjU4OSw2LjAyMy0zLjk3LDkuODM2ICAgYzguNDgyLDE5Ljk2MywyNy45NzQsMzMuMTE3LDQ5LjY1NiwzMy41MWMwLjM0MywwLjAwNiwwLjY4MiwwLjAwOSwxLjAyMywwLjAwOWMyMi42NzUsMCw0Mi40ODYtMTMuNjY4LDUwLjgyLTMzLjk1NGw2LjQwMiwxLjYxMiAgIEMxNTcuMjY0LDEyMC4wNTIsMTU5Ljk1OSwxMTYuNDI4LDE1OC4xODgsMTEzLjQ2NXoiIGZpbGw9IiNmZjA3NmUiIGRhdGEtb3JpZ2luYWw9IiMxZDFkMWIiIGNsYXNzPSIiPjwvcGF0aD4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8L2c+PC9zdmc+" />
+      <div id="text_info1" class="text_info">
+        <img class="info_icon" id="icon1" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDE5MS44MTIgMTkxLjgxMiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyIDUxMiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgY2xhc3M9IiI+PGc+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+Cgk8cGF0aCBzdHlsZT0iIiBkPSJNOTUuOTA2LDBDNDMuMDIzLDAsMCw0My4wMjMsMCw5NS45MDZzNDMuMDIzLDk1LjkwNiw5NS45MDYsOTUuOTA2czk1LjkwNi00My4wMjMsOTUuOTA2LTk1LjkwNiAgIFMxNDguNzg5LDAsOTUuOTA2LDB6IE05NS45MDYsMTc2LjgxMkM1MS4yOTQsMTc2LjgxMiwxNSwxNDAuNTE4LDE1LDk1LjkwNlM1MS4yOTQsMTUsOTUuOTA2LDE1czgwLjkwNiwzNi4yOTQsODAuOTA2LDgwLjkwNiAgIFMxNDAuNTE4LDE3Ni44MTIsOTUuOTA2LDE3Ni44MTJ6IiBmaWxsPSIjZmYwNzZlIiBkYXRhLW9yaWdpbmFsPSIjMWQxZDFiIiBjbGFzcz0iIj48L3BhdGg+Cgk8cGF0aCBzdHlsZT0iIiBkPSJNNDkuNzMzLDk5Ljc4OWwxNy4yMDQtMTAuNzMzYzIuOTI4LTEuODI3LDIuMTg2LTYuMjgyLTEuMTc2LTcuMDZsLTYuNjExLTEuNTMxICAgQzY1LjA3LDY1LjU3Nyw3OS42MTUsNTUuMjYsOTYuMzI5LDU1LjI2YzE2LjQyMiwwLDMwLjk5OCw5Ljg0MiwzNy4xMzIsMjUuMDczYzEuNTQ3LDMuODQyLDUuOTE3LDUuNzAxLDkuNzU5LDQuMTU1ICAgYzMuODQyLTEuNTQ3LDUuNzAzLTUuOTE3LDQuMTU1LTkuNzU5Yy04LjQzMy0yMC45MzktMjguNDctMzQuNDctNTEuMDQ2LTM0LjQ3Yy0yMy43NjcsMC00NC4zNDUsMTUuMTc3LTUxLjkxNCwzNi43OTJsLTYuNTkyLTEuNTI3ICAgYy0zLjM2Mi0wLjc3OS01Ljk4NywyLjg5Ni00LjE2MSw1LjgyNGwxMC43MzMsMTcuMjA0QzQ1LjUyOCwxMDAuMzY4LDQ3LjkxNywxMDAuOTIyLDQ5LjczMyw5OS43ODl6IiBmaWxsPSIjZmYwNzZlIiBkYXRhLW9yaWdpbmFsPSIjMWQxZDFiIiBjbGFzcz0iIj48L3BhdGg+Cgk8cGF0aCBzdHlsZT0iIiBkPSJNMTU4LjE4OCwxMTMuNDY1TDE0Ny43ODQsOTYuMDZjLTEuMDk4LTEuODM2LTMuNDc2LTIuNDM1LTUuMzEzLTEuMzM3bC0xNy40MDUsMTAuNDA0ICAgYy0yLjk2MiwxLjc3MS0yLjMwNSw2LjIzOSwxLjA0Miw3LjA4MWw2LjY1LDEuNjc0Yy02LjYxMSwxMy44NDYtMjAuNzk1LDIyLjk1My0zNi44MTYsMjIuNjYyICAgYy0xNS43NzItMC4yODYtMjkuOTUxLTkuODU0LTM2LjEyMi0yNC4zNzhjLTEuNjItMy44MTItNi4wMjMtNS41OTEtOS44MzYtMy45N2MtMy44MTIsMS42Mi01LjU4OSw2LjAyMy0zLjk3LDkuODM2ICAgYzguNDgyLDE5Ljk2MywyNy45NzQsMzMuMTE3LDQ5LjY1NiwzMy41MWMwLjM0MywwLjAwNiwwLjY4MiwwLjAwOSwxLjAyMywwLjAwOWMyMi42NzUsMCw0Mi40ODYtMTMuNjY4LDUwLjgyLTMzLjk1NGw2LjQwMiwxLjYxMiAgIEMxNTcuMjY0LDEyMC4wNTIsMTU5Ljk1OSwxMTYuNDI4LDE1OC4xODgsMTEzLjQ2NXoiIGZpbGw9IiNmZjA3NmUiIGRhdGEtb3JpZ2luYWw9IiMxZDFkMWIiIGNsYXNzPSIiPjwvcGF0aD4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8L2c+PC9zdmc+" />
         <h2 class="info_text">What's new ?</h2>
         <p class="info">We created the command br!relax to help users relax through the sweeden music and enjoy the soothing tunes together.</p>
         <p class="info">
           <span>Using</span>
-          <span class="spans" data-tooltip="Copy" data-tooltip-position="bottom" id="help">br!help</span>
+          <span class="spans" data-tooltip="Copy" data-tooltip-position="bottom" id="help">br!relax</span>
           <span>command to</span>
           <span>relax.</span>
         </p>
       </div>
-      <img class="card" id="card" src="./images/service.png" alt="none">
+      <img class="card" id="card1" src="./images/service.png" alt="none">
     </div>
+    <div class="server">
+      <div class="cards">
+        <div id="text_info2" class="text_info">
+          <img class="info_icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDQ1OS42NjggNDU5LjY2OCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyIDUxMiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgY2xhc3M9IiI+PGc+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgaWQ9IlhNTElEXzJfIj4KCTxnPgoJCTxnPgoJCQk8cGF0aCBkPSJNMzU5LjU3NCwyOTcuMDQzYy0xOC4yMDQsMjUuMDAyLTQ3LjY5Miw0MS4yODYtODAuOTE2LDQxLjI4NmgtNDYuNjE4Yy0xNi4xMDQsMC0yOS44MTgtMTAuMjI0LTM1LjAxMS0yNC41MzQgICAgIGMtNi40MS0xLjkxMi0xMi42OTYtNC4zOTQtMTguODMtNy40NDJjLTEyLjk5LTYuNDU0LTI0Ljc4NS0xNS4xOTgtMzUuMTY4LTI2LjAzYy02Ny4zNSwxNC43OTYtMTE3Ljc1Nyw3NC44MDgtMTE3Ljc1NywxNDYuNjAzICAgICB2OS4zODRjMCwxMi45LDEwLjQ1OCwyMy4zNTgsMjMuMzU4LDIzLjM1OGgzNjIuNDAzYzEyLjksMCwyMy4zNTgtMTAuNDU4LDIzLjM1OC0yMy4zNTh2LTkuMzg0ICAgICBDNDM0LjM5MiwzNzEuNDY0LDQwNC4zMDksMzIzLjAzMiwzNTkuNTc0LDI5Ny4wNDN6IiBmaWxsPSIjZmYwMDZhIiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBzdHlsZT0iIiBjbGFzcz0iIj48L3BhdGg+CgkJCTxwYXRoIGQ9Ik0xMTguMjA1LDIzMi4xNzhjMTAuMDM5LDAsMTguNzc3LTUuNTY0LDIzLjMwNC0xMy43NzVjMC4xMTksMC4zMjUsMC4yNCwwLjY0OCwwLjM2MiwwLjk3MSAgICAgYzAuMDM2LDAuMDk3LDAuMDcyLDAuMTk0LDAuMTA4LDAuMjkxYzEwLjYyLDI3Ljk1NCwzMS4yODQsNTEuMzg4LDU4LjUzMiw2MS42MjdjNi41OS0xMC40NzEsMTguMjQzLTE3LjQzNSwzMS41My0xNy40MzVoNDYuNjE4ICAgICBjNC42NSwwLDguOTc4LTEuMzEyLDEyLjc3Mi0zLjQzM2M2LjM3Mi0zLjU2MywxMi4xMDItMTIuNjAyLDE1LjA2MS0xNy4zOTNjNC43MzUtNy42NjcsOC40MDQtMTUuNzg4LDExLjY1Ny0yNC42NDIgICAgIGMxLjgyOCwzLjMyLDQuMzQyLDYuMjA4LDcuMzU0LDguNDcxdjExLjQzMWMwLDI1LjgzLTIxLjAxNCw0Ni44NDUtNDYuODQ1LDQ2Ljg0NUgyMzIuMDRjLTguODEzLDAtMTUuOTU4LDcuMTQ1LTE1Ljk1OCwxNS45NTggICAgIGMwLDguODE0LDcuMTQ1LDE1Ljk1OCwxNS45NTgsMTUuOTU4aDQ2LjYxOGM0My40MjksMCw3OC43NjEtMzUuMzMyLDc4Ljc2MS03OC43NjFWMjI2Ljg2ICAgICBjNi40Ni00Ljg1MywxMC42MzktMTIuNTc3LDEwLjYzOS0yMS4yNzh2LTQ4LjExOXYtMTguNDUyYzAtOC44OC00LjM1NS0xNi43MzctMTEuMDQyLTIxLjU2OEMzNTEuODMsNTEuODE2LDI5Ni43NywwLDIyOS44MzMsMCAgICAgQzE2Mi44OTUsMCwxMDcuODM2LDUxLjgxNiwxMDIuNjUsMTE3LjQ0MmMtNi42ODcsNC44MzEtMTEuMDQyLDEyLjY4OS0xMS4wNDIsMjEuNTY4djY2LjU3ICAgICBDOTEuNjA4LDIyMC4zMTEsMTAzLjU3NSwyMzIuMTc4LDExOC4yMDUsMjMyLjE3OHogTTIyOS44MzMsMzEuOTE3YzQ5LjU1MiwwLDkwLjQyMywzNy44NjgsOTUuMiw4Ni4xODUgICAgIGMtMy4xMzYsMi40NjctNS43MDUsNS42Mi03LjQ3NSw5LjIzOGMtMTUuMDU4LTM5LjI4Ni00OC42NzItNjYuNjM4LTg3LjcyNi02Ni42MzhjLTM5Ljg5NiwwLTcyLjk3MSwyOC4yOTItODcuNjY3LDY2LjQ4MSAgICAgYy0wLjAyLDAuMDUyLTAuMDM5LDAuMTA1LTAuMDU5LDAuMTU4Yy0xLjc3LTMuNjE4LTQuMzM5LTYuNzcxLTcuNDc1LTkuMjM4QzEzOS40MTEsNjkuNzg1LDE4MC4yODEsMzEuOTE3LDIyOS44MzMsMzEuOTE3eiIgZmlsbD0iI2ZmMDA2YSIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgc3R5bGU9IiIgY2xhc3M9IiI+PC9wYXRoPgoJCTwvZz4KCTwvZz4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8L2c+PC9zdmc+" />
+          <h2 class="info_text">Support</h2>
+          <p class="info">Join our server for detailed support. We are always online 24/7 to advise you.</p>
+        </div>
+      </div>
+    </div>
+    <div class="premium">
+      <h1 class="inv_text">What are you waiting for, add bots to the server for the best experience </h1>
+      <a href="https://discord.com/oauth2/authorize?client_id=844614150591479848&scope=bot&permissions=1141375160" class="command_btn">Add to Discord</a>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="footer-col">
+            <h4>company</h4>
+            <ul>
+              <li><a href="#">privacy policy</a></li>
+              <li><a href="#">affiliate program</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>get help</h4>
+            <ul>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">command</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>support</h4>
+            <ul>
+              <li><a href="#">invite</a></li>
+              <li><a href="#">vote</a></li>
+              <li><a href="#">support server</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>follow us</h4>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+   </footer>
+   <div class="footer-bottom">
+    <p>copyright &copy;2021 Bruhh studio. designed and code by <span>Tu Thang Phat</span></p>
+  </div>
     
   </div>
   
@@ -115,6 +167,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js" type="text/javascript"></script> 
   <script src="../lib/parallax.min.js"></script>
+  <script src="../lib/vanilla-tilt.js"></script>
   <script type="text/javascript">
     $(".spans").click(function(){
       if($(".spans").click == true){
