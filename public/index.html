@@ -11,7 +11,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
-<body>
+<body onload="loader()">
+  <div id="loader" class="loader">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
   <div id="header" class="home" data-parallax="scroll" data-z-index="1">
     <header>
       <a class="logo" href="/">Bruhh</a>
@@ -202,5 +207,12 @@
 
   <noscript>Cookie Consent by <a href="https://www.FreePrivacyPolicy.com/free-cookie-consent/" rel="nofollow noopener">Bruhh Studio</a></noscript>
   <!-- End Cookie Consent -->
+  <script type="text/javascript">
+    function loader(){
+      setTimeout(function(){
+        $('.loader').fadeToggle();
+      },4000);
+    }
+  </script>
 </body>
 </html>
