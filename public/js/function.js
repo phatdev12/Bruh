@@ -61,3 +61,4 @@ function showFunction4() {
       document.getElementById("text_info2").style.opacity = 0;
   }
 }
+
