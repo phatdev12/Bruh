@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
-<body onload="loader()">
+<body onload="myFunction()">
   <div id="loader" class="loader">
     <div></div>
     <div></div>
@@ -208,10 +208,15 @@
   <noscript>Cookie Consent by <a href="https://www.FreePrivacyPolicy.com/free-cookie-consent/" rel="nofollow noopener">Bruhh Studio</a></noscript>
   <!-- End Cookie Consent -->
   <script type="text/javascript">
-    function loader(){
-      setTimeout(function(){
-        $('.loader').fadeToggle();
-      },4000);
+    var myVar;
+
+    function myFunction() {
+      myVar = setTimeout(showPage, 3000);
+    }
+
+    function showPage() {
+      document.getElementById("loader").style.display = "none";
+      document.getElementById("header").style.display = "block";
     }
   </script>
 </body>
