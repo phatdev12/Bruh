@@ -24,7 +24,7 @@
     "discord-buttons-plugin": "^2.2.0",
     "discord-player": "^4.1.0",
     "discord-together": "^1.1.62",
-    "discord.js": "^12.5.3",
+    "discord.js": "^13.2.0-dev.1628985886.71fdf6f",
     "discord.js-pagination": "^1.0.3",
     "distube": "^2.8.15",
     "erela.js": "^2.3.3",

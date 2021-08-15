@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link crossorigin="anonymous" rel="stylesheet/less" type="text/css" href="./less/style.less">
+    <title>Bruhh - Cookies</title>
+    <script type="text/javascript" crossorigin="anonymous" src="//cdn.jsdelivr.net/npm/less@4.1.1" ></script>
+</head>
+<body>
+    <div class="container">
+        <div class="text">
+            <h1 class="cookie_policy">Cookie Policy</h1>
+            <p>A cookie policy tells your users which cookies are active on your website, what data you’re tracking, what you’re using this information for and where their data is being sent.
+
+                It should also tell people how they can opt out or change their settings. Because the cookies used on a website tend to change, it’s important to update your policy on a regular basis to ensure it’s still accurate.</p>
+            <p>We understand and follow the privacy policy to keep our users safe and above all to have the best user experience.</p>
+        </div>
+        <img src="./img/1.png" class="elements" data-speed="8">
+        <img src="./img/2.png" class="elements" data-speed="6">
+        <img src="./img/3.png" class="elements" data-speed="-10">  
+        <img src="./img/4.png" class="elements" data-speed="-6">
+    </div>
+    <script>
+        function parallax(e){
+            this.querySelectorAll(".elements").forEach(layer => {
+                var speed = layer.getAttribute('data-speed');
+                var x = (window.innerWidth - e.pageX*speed)/100;
+                var y = (window.innerWidth - e.pageY*speed)/100;
+                layer.style.transform = `translateX(${x}px) translateY(${y}px)`;
+            });
+        };
+        document.addEventListener("mousemove", parallax);
+    </script>
+</body>
+</html>

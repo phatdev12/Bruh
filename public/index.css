@@ -11,6 +11,55 @@
   padding: 0;
 
 }
+.cookie{
+  position: fixed;
+  background: #040307;
+  padding: 20px 25px;
+  color: #ffffff;
+  font-family: 'Rubik', sans-serif;
+  width: 100%;
+  z-index: 99999;
+  box-shadow: 0px -5px 10px 0 rgba(0, 0, 0, 0.637), 0 6px 20px 0 rgba(0, 0, 0, 0.384);
+  display: flex;
+  bottom: 0;
+}
+.cookies_text_form{
+  padding: 10px 0px;
+}
+.cookie_title{
+  padding: 0px 12px;
+}
+.buttons button{
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 20px;
+  background: rgb(255, 0, 106);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.buttons button:hover{
+  transform: scale(0.97);
+}
+.buttons .item{
+  margin: 0 0px;
+  padding: 8px 20px;
+}
+.buttons a{
+  color: rgb(255, 0, 106);
+}
+.cookies_text_form span{
+  opacity: .4;
+  font-weight: 200;
+}
+.hide{
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.8);
+  transition: all 0.3s ease;
+}
 .home{
   width: 100%;
   height: 100vh;
