@@ -1,13 +1,10 @@
 const Discord = require('discord.js');
-const { Util,Client, MessageEmbed, Collection, Intents } = require('discord.js');
+const { Util,Client, MessageEmbed, Collection, Intents, MessageButton } = require('discord.js');
 const { executionAsyncResource } = require('async_hooks');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 const { Player } = require("discord-player");
 const fetch = require('node-fetch');
-const discordButtons = require("discord-buttons-plugin")
-const buttonClient = new discordButtons(client)
 const player = new Player(client);
-require('discord-buttons')(client);
 const ytdl = require('ytdl-core');
 const translator = require('@iamtraction/google-translate')
 const weather = require("weather-js");
