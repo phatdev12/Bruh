@@ -60,7 +60,7 @@ mongoose.connect(process.env.URL || 'mongodb+srv://bruhh:bruhh123@cluster0.nxg3f
 ]).catch((err) => {
   console.log(err)
 })
-client.on("message", async message => {
+client.on("messageCreate", async message => {
     if (!message.content.startsWith(prefix) || message.author.bot) return
     //This is our server queue. We are getting this server queue from the global queue. 
     const server_queue = queue.get(message.guild.id);
