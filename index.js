@@ -337,13 +337,13 @@ client.on("message", async message => {
             .setColor("#ffb145")
             .addField("Duration", `${serverQueue.songs[0].second}s`, true)
         if (client.ws.ping <= 100){
-          songinf.addField("Connection", `<:The_connection_is_excellent:853012983559225344> ${client.ws.ping}`)
+          songinf.addField("Connection", `<:The_connection_is_excellent:853012983559225344> ${client.ws.ping}`, true)
         }
         if (client.ws.ping >= 100, client.ws.ping <= 250){
-          songinf.addField("Connection", `<:The_connection_is_good:853013073718935602> ${client.ws.ping}`)
+          songinf.addField("Connection", `<:The_connection_is_good:853013073718935602> ${client.ws.ping}`, true)
         }
         else {
-          songinf.addField("Connection", `<:The_connection_is_bad:853013157374853150>  ${client.ws.ping}`)
+          songinf.addField("Connection", `<:The_connection_is_bad:853013157374853150>  ${client.ws.ping}`, true)
         }
         message.channel.send(songinf)
     }
