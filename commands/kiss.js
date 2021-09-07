@@ -20,6 +20,6 @@ module.exports = {
     .setDescription(`${message.author} kiss ${usersss}`)
     .setImage(rand[Math.floor(Math.random()*rand.length)])
     .setTimestamp()         
-    return message.channel.send(kissem);
+    return message.channel.send(kissem)
   }
 }

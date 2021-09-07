@@ -1,5 +1,4 @@
 const { MessageEmbed } = require("discord.js");
-const distube = require("distube")
 
 module.exports = {
   name: 'queue',

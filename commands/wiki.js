@@ -27,13 +27,13 @@ module.exports = {
             message.channel.send(embed)
         }
         else { // If Only One Result
-            const embed = new MessageEmbed()
+            const embeds = new MessageEmbed()
             .setColor('RANDOM')
             .setTitle(response.title)
             .setThumbnail(response.thumbnail.source)
             .setURL(response.content_urls.desktop.page)
             .setDescription(response.extract)
-            message.channel.send(embed)
+            message.channel.send(embeds)
         }
     }
     catch(err) {

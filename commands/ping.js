@@ -3,10 +3,21 @@ module.exports = {
   name: 'ping',
   description: "This is ping!",
   execute(message, args, client){
+    let color;
     const pingEmbed = new MessageEmbed()
-      .setFooter('Bruhh', 'https://scontent-xsp1-3.xx.fbcdn.net/v/t1.6435-9/181282250_504799057544088_8090273501818269906_n.jpg?_nc_cat=109&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=MZgzcEAsLR0AX-oZpQo&_nc_ht=scontent-xsp1-3.xx&oh=3487a506ed5011815348bf8433d5cf60&oe=60CA39C9')
-      .setTitle(`<a:wave:868782469011353630> pong ${client.ws.ping} ms`)
-      .setColor('#0099ff')
-      message.channel.send(pingEmbed);
+    if (client.ws.ping <= 100){
+      pingEmbed.setTitle(`<:The_connection_is_excellent:853012983559225344> Connection: ${client.ws.ping} ms`);
+      color = '#00ff48';
+    }
+    if (client.ws.ping >= 100, client.ws.ping <= 300){
+      pingEmbed.setTitle(`<:The_connection_is_good:853013073718935602> Connection: ${client.ws.ping} ms`);
+      color = '#ffdc2b';
+    }
+    else {
+      pingEmbed.setTitle(`<:The_connection_is_bad:853013157374853150> Connection: ${client.ws.ping} ms`);
+      color = '#ff3333';
+    }
+    pingEmbed.setColor(color);
+    message.channel.send(pingEmbed)
   }
 }

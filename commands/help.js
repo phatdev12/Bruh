@@ -1,4 +1,4 @@
-const { MessageEmbed, RichEmbed} = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 module.exports = {
   name: 'help',
   description: 'help',
@@ -13,6 +13,6 @@ module.exports = {
       .addField("Other", "`wiki`, `covid19`, `weather`.",true)
       .setColor('#2F3136')
       .setTimestamp()
-    message.channel.send(help)
+      message.channel.send(help)
   }
 }

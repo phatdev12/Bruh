@@ -1,5 +1,6 @@
 const { Util,Client, MessageEmbed, Collection } = require('discord.js');
 const fetch = require('node-fetch');
+require('@discordjs/voice');
 module.exports = {
   name: 'chess',
   description: 'chess',

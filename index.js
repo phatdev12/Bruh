@@ -1,17 +1,23 @@
 const Discord = require('discord.js');
 const { Util,Client, MessageEmbed, Collection, Intents, MessageButton } = require('discord.js');
 const { executionAsyncResource } = require('async_hooks');
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
-const { Player } = require("discord-player");
+const client = new Client({ 
+  intents: [
+            Intents.FLAGS.GUILDS, 
+            Intents.FLAGS.GUILD_MESSAGES,
+            Intents.FLAGS.GUILD_VOICE_STATES
+          ],
+  partials: ["GUILD_MEMBER", "MESSAGE", "USER", "CHANNEL"],
+  allowedMentions: { parse: ["roles", "users"], repliedUser: true },
+  restTimeOffset: 0
+});
 const fetch = require('node-fetch');
-const player = new Player(client);
 const ytdl = require('ytdl-core');
 const translator = require('@iamtraction/google-translate')
 const weather = require("weather-js");
 const config = require('./package.json');
 const fs = require("fs");
 const ytdlDiscord = require("ytdl-core-discord");
-const keepAlive = require('./keep_alive')
 const yts = require("yt-search");
 const { YTSearcher } = require('ytsearcher');
 const { DiscordTogether } = require('discord-together');
@@ -21,6 +27,7 @@ client.cooldown = new Collection();
 client.events = new Collection();
 client.db = require("quick.db");
 const mongoose = require('mongoose');
+
 
 const commands_file = fs.readdirSync('./commands/').filter(files => files.endsWith('.js'));
 
@@ -46,7 +53,6 @@ let data;
 const prefix = 'br!';
 
 const queue = new Map();
-client.player = player;
 const searcher = new YTSearcher({
     key: "AIzaSyDR-u6HYCKbrGak43RL0siTGMhgVypTGO8",
     revealed: true
@@ -60,7 +66,7 @@ mongoose.connect(process.env.URL || 'mongodb+srv://bruhh:bruhh123@cluster0.nxg3f
 ]).catch((err) => {
   console.log(err)
 })
-client.on("messageCreate", async message => {
+client.on("message", async message => {
     if (!message.content.startsWith(prefix) || message.author.bot) return
     //This is our server queue. We are getting this server queue from the global queue. 
     const server_queue = queue.get(message.guild.id);
@@ -248,10 +254,13 @@ client.on("messageCreate", async message => {
       client.commands.get('song').execute(message, args, client, serverQueue, searcher, ytdl)
     }
     async function execute(message, serverQueue){
-      const permissions = channel.permissionsFor(message.client.user)
-      if(!permissions.has('CONNECT')) return message.reply('I Dont Have Perms To Connect to The VC You Are In.').then(serverQueue.connection.dispatcher.end()) // If BOT Doesnot Has Connect Perms to Connect to VC.
-      if(!permissions.has('SPEAK')) return message.reply('I Dont Have perms To Speak In The VC, How Can I PLay Music.')
-      let vc = message.member.voice.channel;
+      let vc = message.member?.voice.channel;
+      if (!vc?.viewable)
+        return bot.say.WarnMessage(message, "I need **\`VIEW_CHANNEL\`** permission.");
+      if (!vc?.joinable)
+        return bot.say.WarnMessage(message, "I need **\`CONNECT_CHANNEL\`** permission.");
+      if (!vc?.speakable)
+        return bot.say.WarnMessage(message, "I need **\`SPEAK\`** permission.");
       if(!vc){
           return message.channel.send("Please join a voice chat first");
       }else{
@@ -273,71 +282,77 @@ client.on("messageCreate", async message => {
             return
           }
           if(!serverQueue){
-              const queueConstructor = {
-                  txtChannel: message.channel,
-                  vChannel: vc,
-                  connection: null,
-                  songs: [],
-                  volume: 50,
-                  playing: true
-              };
-              queue.set(message.guild.id, queueConstructor);
+            const queueConstructor = {
+                txtChannel: message.channel,
+                vChannel: vc,
+                connection: null,
+                songs: [],
+                volume: 10,
+                playing: true
+            };
+            queue.set(message.guild.id, queueConstructor);
 
-              queueConstructor.songs.push(song);
+            queueConstructor.songs.push(song);
 
-              try{
-                  let connection = await vc.join();
-                  queueConstructor.connection = connection;
-                  play(message.guild, queueConstructor.songs[0]);
-              }catch (err){
-                  console.error(err);
-                  queue.delete(message.guild.id);
-                  return message.channel.send(`Unable to join the voice chat ${err}`)
-              }
-          }else{
-              serverQueue.songs.push(song);
-              return message.channel.send(`The song has been added ${song.url}`);
-          }
+            try{
+                let connection = await vc.join();
+                queueConstructor.connection = connection;
+                play(message.guild, queueConstructor.songs[0]);
+            }catch (err){
+                console.error(err);
+                queue.delete(message.guild.id);
+                return message.channel.send(`Unable to join the voice chat ${err}`)
+            }
+        }else{
+            serverQueue.songs.push(song);
+            return message.channel.send(`The song has been added **${song.title}**`);
+        }
       }
     }
-    function play(guild, song){
-        const serverQueue = queue.get(guild.id);
+    function play(guild, song, queueConstructor){
+        const serverQueue = queue.get(guild.id, queueConstructor);
         if(!song){
             serverQueue.vChannel.leave();
             queue.delete(guild.id);
             return;
         }
         const dispatcher = serverQueue.connection
-            .play(ytdl(song.url))
-            .on('finish', () =>{
-                if(serverQueue.loopone){
-                  play(guild, serverQueue.songs[0]);
-                }
-                else if(serverQueue.loopall){
-                  serverQueue.songs.push(serverQueue.songs[0]);
-                  serverQueue.songs.shift();
-                } else {
-                  serverQueue.songs.shift();
-                }
-                play(guild, serverQueue.songs[0]);
-            })
-            const songinf = new MessageEmbed()
+        .play(ytdl(song.url))
+        .on('finish', () =>{
+            if(serverQueue.loopone){
+              play(guild, serverQueue.songs[0]);
+            }
+            else if(serverQueue.loopall){
+              serverQueue.songs.push(serverQueue.songs[0]);
+              serverQueue.songs.shift();
+            } else {
+              serverQueue.songs.shift();
+            }
+            play(guild, serverQueue.songs[0]);
+        })
+        const songinf = new MessageEmbed()
             .setAuthor('Bruhh Bot' ,'https://media.discordapp.net/attachments/848893653857468417/850944364960022568/Artboard_1.png?width=434&height=434')
             .setTitle(`Now playing ${serverQueue.songs[0].title}`)
-            .setThumbnail('https://media.discordapp.net/attachments/848893653857468417/850944364960022568/Artboard_1.png?width=434&height=434')
-            .setDescription(`${serverQueue.songs[0].second} |⫴⫴⫴⫴⫴⫴⫴⫴⫴⫴⫴⫴⫴⫴⫴⫴⫴⫴|\n **Hope you have a good time**`)
+            .setThumbnail('https://media.discordapp.net/attachments/848893653857468417/850944364960022568/Artboard_1.png?width=434&height=434')          
             .setColor("#ffb145")
-            serverQueue.txtChannel.send(songinf)
+            .addField("Duration", `${serverQueue.songs[0].second}s`, true)
+        if (client.ws.ping <= 100){
+          songinf.addField("Connection", `<:The_connection_is_excellent:853012983559225344> ${client.ws.ping}`, true)
+        }
+        if (client.ws.ping >= 100, client.ws.ping <= 250){
+          songinf.addField("Connection", `<:The_connection_is_good:853013073718935602> ${client.ws.ping}`, true)
+        }
+        else {
+          songinf.addField("Connection", `<:The_connection_is_bad:853013157374853150>  ${client.ws.ping}`, true)
+        }
+        message.channel.send(songinf)
     }
 
     function stop (message, serverQueue){
-        if(!message.member.voice.channel)
-            return message.channel.send("You need to join the voice chat first!")
-        serverQueue.songs = [];
-        if(serverQueue.connection.dispatcher.end() == null){
-          return
-        }
-        serverQueue.connection.dispatcher.end();
+      if(!message.member.voice.channel)
+        return message.channel.send("You need to join the voice chat first!")
+      serverQueue.songs = [];
+      serverQueue.connection.dispatcher.end();
     }
     function skip (message, serverQueue){
         if(!message.member.voice.channel)
