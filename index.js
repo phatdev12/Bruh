@@ -427,4 +427,4 @@ function xp(message) {
 
 
 
-client.login("ODQ0NjE0MTUwNTkxNDc5ODQ4.YKU-OQ.srjq_C5bYC9CKC9TVPadxWsgiNQ");
+client.login("");
